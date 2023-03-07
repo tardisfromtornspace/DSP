@@ -1,0 +1,44 @@
+function [y,m] = comp(x,n,F) % x is the input sequence and F is the compression factor.
+% NOTE, ORIGIN IS 0 , THE FIRST ONE IS THE 0, ALBEIT IRL THAT IS NOT RIGHT
+    arguments
+        x
+        n
+        F
+    end
+    %m = (n(1)):(floor(n(end)/F));
+    m = (floor(n(1)/F)):(floor(n(end)/F));
+    y = zeros(1, length(m));
+    %startPos = 1; % May be different if we consider the mathemathis and negative values (see commented code below)
+    %a = 0;
+    %while startPos + F * a < length(x)   
+    %    y(startPos + a) = x(F * a + startPos);
+    %    a = a + 1;
+    %end
+
+    
+    %y = zeros(1, length(m));
+    startPos = 1;
+    if n(1) < 0 && n(end) >= 0
+        startPos = find(n==0); 
+    end
+    a1= 1;
+    aux = zeros(1, length(m));
+    %y(round(startPos/F))=x(startPos);
+    while (startPos - (F * a1)) >= 1
+        aux(a1) = x(-F*a1 + startPos)
+        %y(round(startPos/F) + a) = x(F*a + startPos);
+        a1 = a1 +1;
+    end
+    ladoDerecho = fliplr(aux(1:a1));
+    a1 = 1;
+    aux2 = zeros(1, length(m));
+    while (startPos + F * a1) <= length(x)
+        aux2(a1) = x(F*a1 + startPos)
+        %y(round(startPos/F) + a) = x(F * a + startPos);
+        a1 = a1 + 1;
+    end
+    ladoIzquierdo = fliplr(aux2(1:a1-1));
+    y = [ladoDerecho x(startPos) ladoIzquierdo];
+    
+    %stem(m, y)
+end

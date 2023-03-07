@@ -1,0 +1,13 @@
+function[y,m] = delay(x,n,n0) % x is the input signal and n0 is the delay
+    arguments
+        x
+        n
+        n0
+    end
+    m = (n(1)-n0):(n(end));
+    y(n0+1) = 0;
+    for n in x.length:
+    y(n0) = x(m);
+end
+
+

@@ -1,0 +1,21 @@
+function [y,m] = sma(x,n,M,ac) % x is the input sequence and M+1 is the number of samples averaged and ac are the M auxiliary conditions.
+    arguments
+        x
+        n
+        M
+        ac
+    end
+    m = n;
+    y(length(x)) = 0;
+    aux = [ac x]
+    y(1) = x(1)-ac;
+    for a=length(ac):length(x)
+        z = 0
+        for b=-M:0
+            z += aux(b+a)
+        if (a-M)
+        y(a) = 1/(M+1) + z()-x(a-1);
+    end
+end
+
+
