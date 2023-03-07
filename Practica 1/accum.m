@@ -8,3 +8,5 @@ function [y,m] = accum(x,n) % x is the input signal.
 end
 
 
+
+
