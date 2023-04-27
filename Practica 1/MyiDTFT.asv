@@ -1,0 +1,21 @@
+function [x, n] = MyiDTFT(F,N)
+    syms w
+
+    n = -N:N
+
+    %axis([ni,nf,0,2])
+    x()
+    xint(F .*exp(1i*n*w),-pi,pi)/(2*pi)
+
+    F(w)= sum(x.*exp(-1i*w*n));
+    %F(w)=simplify(F(w));
+    disp('DT Fourier Inverse Transform: ')
+    F(w)
+    subplot(2,1,1); fplot((real(F).^2 + imag(F).^2).^(1/2),[-pi,pi]) % no reconoce las abs(F) para este caso, de forma extraña, probamos la definición
+    subplot(2,1,2); fplot(phase(F),[-pi,pi]) %angle(F)
+
+end
+
+
+
+
