@@ -1,8 +1,8 @@
 function [F] = MyDTFT(x,n)
     syms w
 
-    ni = n(1);
-    nf = n(end); 
+    %ni = n(1);
+    %nf = n(end); 
 
     %axis([ni,nf,0,2])
 
@@ -14,7 +14,3 @@ function [F] = MyDTFT(x,n)
     subplot(2,1,2); fplot(phase(F),[-pi,pi]) %angle(F)
 
 end
-
-
-
-

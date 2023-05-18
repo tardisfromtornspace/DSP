@@ -11,7 +11,3 @@ function [x, n] = MyiDTFT(F,N)
     stem(n, x);
 
 end
-
-
-
-
